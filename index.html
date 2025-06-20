@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yo Soy Frankie - Inicio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="frankie-favicon.png" />
+    <style>
+        /* Estilos básicos para header y logo */
+        header {
+            background: rgba(20, 20, 35, 0.9);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center; /* Centra logo horizontal */
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo img {
+            height: 60px;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Botón para controlar música */
+        #music-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(111, 0, 255, 0.8);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 20;
+            transition: background 0.3s ease;
+        }
+
+        #music-toggle:hover {
+            background: rgba(111, 0, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="holographic-overlay"></div>
+    <div class="circuit-background"></div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="frankie-logo.png" alt="Logo de Yo Soy Frankie" />
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="glitch-text">Bienvenido al Mundo de Frankie</h1>
+            <p class="tech-text">Explora la historia de una androide extraordinaria</p>
+        </section>
+
+        <section class="season-selection">
+            <div class="season-card" onclick="window.location.href='temporada1.html'">
+                <div class="card-glow"></div>
+                <img src="temporada 1.png" alt="Primera Temporada" />
+                <div class="season-card-content">
+                    <h2>2017 - Primera Temporada</h2>
+                    <p>El comienzo de la extraordinaria historia de Frankie como un androide descubriendo el mundo humano.</p>
+                    <a href="temporada1.html" class="neon-button">Ver Episodios</a>
+                </div>
+            </div>
+
+            <div class="season-card" onclick="window.location.href='temporada2.html'">
+                <div class="card-glow"></div>
+                <img src="temporada 2.png" alt="Segunda Temporada" />
+                <div class="season-card-content">
+                    <h2>2018 - Segunda Temporada</h2>
+                    <p>Frankie enfrenta nuevos desafíos mientras protege su secreto y forja amistades más profundas.</p>
+                    <a href="temporada2.html" class="neon-button">Ver Episodios</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>2023 Sitio de Fans de Yo Soy Frankie | Tributo No Oficial de Nickelodeon</p>
+        </div>
+    </footer>
+
+    <!-- Audio de fondo -->
+    <audio id="background-music" src="musica-frankie.mp3" loop></audio>
+
+    <!-- Botón para activar/pausar música -->
+    <button id="music-toggle">🎵 Activar música</button>
+
+    <script>
+        const music = document.getElementById('background-music');
+        const musicToggle = document.getElementById('music-toggle');
+        let isPlaying = false;
+
+        music.volume = 0.2; // Volumen inicial
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicToggle.textContent = '🎵 Activar música';
+            } else {
+                music.play().catch(() => {
+                    // En caso de que el navegador bloquee autoplay sin interacción, nada especial.
+                });
+                musicToggle.textContent = '🔇 Pausar música';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+
+    <script>
+        // Añadir efectos de hover y animaciones para las tarjetas de temporada
+        document.querySelectorAll('.season-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+</html>

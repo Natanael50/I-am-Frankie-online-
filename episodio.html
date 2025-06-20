@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yo Soy Frankie - Detalles del Episodio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="frankie-favicon.png">
+</head>
+<body>
+    <div class="holographic-overlay"></div>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="frankie-logo.png" alt="Logo de Yo Soy Frankie">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="episodes.html">Episodios</a></li>
+                <li><a href="#temporadas">Temporadas</a></li>
+                <li><a href="#personajes">Personajes</a></li>
+                <li class="cta"><a href="#ver-ahora">Ver Ahora</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="episode-detail">
+        <section class="episode-hero">
+            <div class="episode-player-container">
+                <iframe id="episode-video" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                <div class="video-credits">
+                    <p>Videos cortesía de <a href="https://iamfrankie0nline.blogspot.com/p/capitulos.html" target="_blank">I Am Frankie Online</a>.</p>
+                    <p>Este contenido no es de nuestra propiedad y se utiliza solo con fines de fan site.</p>
+                    <p>Todos los derechos reservados a Nickelodeon y sus respectivos propietarios.</p>
+                </div>
+            </div>
+            <div class="episode-info-container">
+                <h1 id="episode-title"></h1>
+                <div class="episode-metadata">
+                    <span id="episode-season-number"></span>
+                    <span id="episode-air-date"></span>
+                </div>
+                <p id="episode-description" class="episode-full-description"></p>
+                
+                <div class="key-moments">
+                    <h3>Momentos Clave</h3>
+                    <ul id="key-moments-list"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p> 2023 Sitio de Fans de Yo Soy Frankie | Tributo No Oficial de Nickelodeon</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="episodio-detalle.js"></script>
+</body>
+</html>

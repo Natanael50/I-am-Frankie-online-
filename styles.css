@@ -1,0 +1,762 @@
+:root {
+    --primary-blue: #00e5ff;
+    --secondary-pink: #ff49b0;
+    --background-dark: #0a0a1a;
+    --text-light: #e0e0ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+.holographic-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: 
+        linear-gradient(45deg, rgba(0,229,255,0.05) 0%, rgba(255,73,176,0.05) 100%),
+        repeating-linear-gradient(
+            45deg,
+            transparent 0,
+            transparent 10px,
+            rgba(0,229,255,0.02) 10px,
+            rgba(0,229,255,0.02) 20px
+        );
+    animation: overlay-flow 15s linear infinite;
+    z-index: 10;
+}
+
+@keyframes overlay-flow {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: linear-gradient(to right, rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.7));
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    max-width: 200px; 
+    width: 100%; 
+}
+
+header .logo img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 80px; 
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    position: relative;
+    padding: 0.5em 1em;
+    color: var(--text-light);
+    text-decoration: none;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-blue), var(--secondary-pink));
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-pink);
+}
+
+.cta a {
+    background: linear-gradient(to right, var(--primary-blue), var(--secondary-pink));
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.hero-characters {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.neon-button {
+    position: relative;
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-pink));
+    padding: 1em 2em;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    border: 2px solid transparent;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    box-shadow: 
+        0 0 20px rgba(0,229,255,0.3),
+        0 0 40px rgba(0,229,255,0.1);
+}
+
+.neon-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.neon-button:hover::before {
+    left: 100%;
+}
+
+.neon-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 0 30px var(--primary-blue),
+        0 0 60px rgba(0,229,255,0.4);
+}
+
+.neon-button i {
+    font-size: 1.2em;
+}
+
+#featured-sections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 3rem 5%;
+}
+
+.section-card {
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid var(--primary-blue);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+}
+
+#featured-episode {
+    background: rgba(0, 229, 255, 0.1);
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+.featured-episode-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.featured-episode-thumbnail {
+    position: relative;
+    max-width: 400px;
+}
+
+.featured-episode-thumbnail img {
+    width: 100%;
+    border-radius: 15px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.watch-episode-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to right, var(--primary-blue), var(--secondary-pink));
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+.featured-episode-info {
+    text-align: left;
+    padding: 2rem;
+    background: rgba(0, 229, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid var(--primary-blue);
+}
+
+.featured-episode-info h2 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.featured-episode-info h3 {
+    color: var(--secondary-pink);
+    margin-bottom: 1.5rem;
+}
+
+.featured-episode-info p {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+#episode-filters {
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-controls select {
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--text-light);
+    border: 1px solid var(--primary-blue);
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+#episode-grid {
+    padding: 2rem 5%;
+}
+
+.episodes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.episode-card {
+    background: rgba(0,229,255,0.05);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.episode-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-pink));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.episode-card:hover::before {
+    opacity: 1;
+}
+
+.episode-thumb {
+    position: relative;
+    overflow: hidden;
+}
+
+.episode-thumb img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.episode-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.episode-card:hover .episode-overlay {
+    opacity: 1;
+}
+
+.episode-number {
+    color: var(--primary-blue);
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0,229,255,0.5);
+    margin-bottom: 0.5rem;
+}
+
+.episodes-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 5%;
+}
+
+.episode-preview-card {
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid var(--primary-blue);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.episode-preview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+}
+
+.episode-preview-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+}
+
+.episode-preview-info {
+    padding: 1.5rem;
+}
+
+.episode-preview-info h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.episode-preview-info p {
+    margin-bottom: 1.5rem;
+}
+
+#ultimos-episodios {
+    padding: 3rem 5%;
+}
+
+#ultimos-episodios h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+footer {
+    background: linear-gradient(to right, rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.7));
+    padding: 2rem;
+    text-align: center;
+}
+
+#episode-detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 5%;
+}
+
+.episode-hero {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.episode-player-container {
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    overflow: hidden;
+    background: linear-gradient(var(--background-dark), var(--background-dark)) padding-box,
+                linear-gradient(45deg, var(--primary-blue), var(--secondary-pink)) border-box;
+}
+
+.episode-player-container iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 13px;
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
+}
+
+.episode-info-container {
+    background: rgba(0, 229, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
+
+.episode-info-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    padding: 2px;
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-pink));
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.episode-metadata {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    color: var(--primary-blue);
+}
+
+.episode-full-description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.key-moments {
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid var(--primary-blue);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.key-moments h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-blue);
+}
+
+.key-moments ul {
+    list-style-type: none;
+}
+
+.key-moments li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.key-moments li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-pink);
+}
+
+.video-credits {
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid var(--primary-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.video-credits p {
+    margin-bottom: 0.5rem;
+}
+
+.video-credits a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.video-credits a:hover {
+    color: var(--secondary-pink);
+    text-decoration: underline;
+}
+
+.season-hero {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+.season-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, 
+        transparent,
+        rgba(10,10,26,0.8)
+    );
+}
+
+.season-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    animation: heroZoom 20s linear infinite alternate;
+}
+
+@keyframes heroZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.season-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: var(--text-light);
+}
+
+.season-info h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-blue);
+    text-shadow: 0 0 10px rgba(0,229,255,0.5);
+}
+
+.season-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.season-card {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.season-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg, 
+        transparent,
+        rgba(0, 229, 255, 0.2),
+        transparent
+    );
+    transform: rotate(-45deg);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.season-card:hover::before {
+    opacity: 1;
+}
+
+.season-card:hover {
+    transform: scale(1.02);
+    box-shadow: 
+        0 15px 40px rgba(0, 229, 255, 0.3),
+        0 0 60px rgba(255, 73, 176, 0.2);
+}
+
+.season-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.season-card:hover img {
+    filter: brightness(1.1) contrast(1.1);
+    transform: scale(1.05);
+}
+
+.season-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(10, 10, 26, 0.9));
+    padding: 2rem;
+    color: var(--text-light);
+    transition: background 0.3s ease;
+}
+
+.season-card:hover .season-card-content {
+    background: linear-gradient(transparent, rgba(10, 10, 26, 0.7));
+}
+
+.season-card-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-blue);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.season-card-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.circuit-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(0,229,255,0.1) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 0%, transparent 40%, rgba(0,229,255,0.1) 50%, transparent 60%, transparent 100%),
+        repeating-linear-gradient(90deg, var(--background-dark) 0, var(--background-dark) 30px, rgba(0,229,255,0.03) 30px, rgba(0,229,255,0.03) 31px),
+        repeating-linear-gradient(0deg, var(--background-dark) 0, var(--background-dark) 30px, rgba(0,229,255,0.03) 30px, rgba(0,229,255,0.03) 31px);
+    animation: circuit-flow 20s linear infinite;
+}
+
+@keyframes circuit-flow {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .season-selection {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .season-card {
+        flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    header .logo {
+        max-width: 150px; 
+    }
+
+    header .logo img {
+        max-height: 60px; 
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        background: rgba(10, 10, 26, 0.95);
+        backdrop-filter: blur(10px);
+    }
+
+    #featured-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-episode-details {
+        flex-direction: column;
+    }
+
+    .episodes-container {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-episode-info {
+        padding: 1rem;
+    }
+
+    .episodes-preview {
+        grid-template-columns: 1fr;
+    }
+
+    .episode-preview-card {
+        max-width: 100%;
+    }
+
+    .episode-hero {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .episode-player-container {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .episode-info-container {
+        width: 100%;
+    }
+
+    .episode-metadata {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .season-hero {
+        height: 300px;
+    }
+    
+    .season-info h1 {
+        font-size: 2rem;
+    }
+    
+    .season-card {
+        margin: 1rem 0;
+    }
+
+    .episode-card {
+        margin: 1rem 0;
+    }
+
+    .season-card img {
+        height: 200px;
+    }
+
+    .season-card-content h2 {
+        font-size: 1.5rem;
+    }
+}
