@@ -1,0 +1,129 @@
+:root {
+    --primary-color: #0d0d0d;
+    --secondary-color: #1a1a1a;
+    --accent-color: #00ffff; /* Cian neón */
+    --text-color: #e0e0e0;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--secondary-color);
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.banner {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.banner-image {
+    flex: 1;
+    background-color: #000;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    border: 1px dashed var(--accent-color);
+}
+
+.synopsis {
+    flex: 2;
+}
+
+.synopsis h2 {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+.seasons {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.season-selector {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.season-selector button {
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+}
+
+.season-selector button.active,
+.season-selector button:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.episode-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.episode-card {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.episode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.episode-thumbnail {
+    background-color: #000;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.episode-title {
+    padding: 1rem;
+    font-weight: bold;
+}
