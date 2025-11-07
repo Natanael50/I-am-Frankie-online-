@@ -16,8 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'episode-card';
             card.innerHTML = `
                 <div class="episode-thumbnail">
-                    <!-- <img src="temporada${seasonNumber}-episodio${episodeNumber}.jpg" alt="${title}"> -->
-                    <p>Imagen: temporada${seasonNumber}-episodio${episodeNumber}.jpg</p>
+                    <img src="temporada${seasonNumber}-episodio${episodeNumber}.jpg" alt="${title}" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="episode-title">${title}</div>
             `;
