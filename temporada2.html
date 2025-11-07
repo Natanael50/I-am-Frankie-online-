@@ -3,56 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yo Soy Frankie - Temporada 2</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="frankie-favicon.png">
+    <title>I Am Frankie - Temporada 2</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="holographic-overlay"></div>
     <header>
-        <nav>
-            <div class="logo">
-                <div class="logo">
-                    <img src="frankie-logo.png" alt="Logo de Yo Soy Frankie">
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="temporada1.html">Temporada 1</a></li>
-                <li><a href="temporada2.html" class="active">Temporada 2</a></li>
-                <li><a href="#personajes">Personajes</a></li>
-            </ul>
-        </nav>
+        <a href="index.html" style="text-decoration: none; color: inherit;"><h1>I Am Frankie</h1></a>
     </header>
 
     <main>
-        <section class="season-hero">
-            <img src="temporada 2.png" alt="Temporada 2 Hero" class="season-hero-image">
-            <div class="season-info">
-                <h1>Temporada 2</h1>
-                <p>Frankie continúa su aventura enfrentando nuevos desafíos y descubrimientos mientras protege su secreto y forja amistades más profundas.</p>
+        <section class="seasons">
+            <div class="season-title">
+                <h2>Temporada 2</h2>
             </div>
-        </section>
-
-        <section class="episode-list">
-            <div class="episodes-grid">
-                <!-- Los episodios se cargarán dinámicamente desde temporada2.js -->
+            <div id="episode-list-season2" class="episode-list">
+                <!-- Los episodios se generarán dinámicamente aquí -->
             </div>
         </section>
     </main>
 
-    <div class="video-credits">
-        <p>Videos cortesía de <a href="https://iamfrankie0nline.blogspot.com/p/capitulos.html" target="_blank">I Am Frankie Online</a>.</p>
-        <p>Este contenido no es de nuestra propiedad y se utiliza solo con fines de fan site.</p>
-        <p>Todos los derechos reservados a Nickelodeon y sus respectivos propietarios.</p>
-    </div>
-
     <footer>
-        <div class="footer-content">
-            <p>2023 Sitio de Fans de Yo Soy Frankie | Tributo No Oficial de Nickelodeon</p>
-        </div>
+        <p>Todos los videos siguientes o vienen de Iam Frankie online</p>
     </footer>
 
-    <script type="module" src="temporada2.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const season2List = document.getElementById('episode-list-season2');
+            const episodesS2 = Array.from({ length: 21 }, (_, i) => `Episodio ${i + 1}`);
+
+            function generateEpisodeCards(seasonNumber, episodeTitles, container) {
+                container.innerHTML = ''; // Limpiar la lista
+                episodeTitles.forEach((title, index) => {
+                    const episodeNumber = index + 1;
+                    const card = document.createElement('div');
+                    card.className = 'episode-card';
+                    card.innerHTML = `
+                        <div class="episode-thumbnail">
+                            <img src="temporada${seasonNumber}-episodio${episodeNumber}.jpg" alt="${title}" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="episode-title">${title}</div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            generateEpisodeCards(2, episodesS2, season2List);
+        });
+    </script>
 </body>
 </html>
