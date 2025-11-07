@@ -127,3 +127,34 @@ main {
     padding: 1rem;
     font-weight: bold;
 }
+
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    background-color: var(--secondary-color);
+    border-top: 1px solid var(--accent-color);
+    font-size: 0.9rem;
+    color: rgba(224, 224, 224, 0.7); /* Lighter text color */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .banner {
+        flex-direction: column;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .episode-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .season-selector button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
