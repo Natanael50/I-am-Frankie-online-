@@ -1,0 +1,219 @@
+:root {
+    --primary-color: #0d0d0d;
+    --secondary-color: #1a1a1a;
+    --accent-color: #00ffff; /* Cian neón */
+    --text-color: #e0e0e0;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--secondary-color);
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.banner {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.banner-image {
+    flex: 1;
+    background-color: #000;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    border: 1px dashed var(--accent-color);
+}
+
+.synopsis {
+    flex: 2;
+}
+
+.synopsis h2 {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+.seasons {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.season-selector {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.season-selector button {
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+}
+
+.season-selector button.active,
+.season-selector button:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.episode-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.episode-card {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.episode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.episode-thumbnail {
+    background-color: #000;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.episode-title {
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.season-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.season-selection-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 1rem;
+    flex-wrap: wrap;
+}
+
+.season-card {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    display: block;
+    border: 2px solid var(--accent-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.season-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--accent-color);
+}
+
+.season-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.season-card:hover img {
+    opacity: 0.8;
+}
+
+.season-card-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    background-color: var(--secondary-color);
+    border-top: 1px solid var(--accent-color);
+    font-size: 0.9rem;
+    color: rgba(224, 224, 224, 0.7); /* Lighter text color */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .banner {
+        flex-direction: column;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .episode-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .season-selector button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
